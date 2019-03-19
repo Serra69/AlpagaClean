@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class Alpagaz : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.C))
+    public GameObject alpagaz;
+    public GameObject m_parent;
+
+    private float pos;
+
+    private void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (Input.GetKeyDown(KeyCode.A))
         {
- 			Debug.Log("Bonjour");
             Debug.Log("prout");
+            Build();
+
 
         }
 	}
+
+    public void Build()
+    {
+        Instantiate(alpagaz, new Vector3(0, 0, pos), Quaternion.identity, m_parent.transform);
+
+        pos = pos + alpagaz.transform.localScale.z;
+    }
 }
